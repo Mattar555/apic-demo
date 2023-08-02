@@ -2,10 +2,10 @@ swagger: '2.0'
 info:
   title: Test API
   x-ibm-name: test-api
-  version: 1.1.2
+  version: 1.1.3
   contact:
-    name: LeoVidal-MarwanAttar
-    email: MYL@ibm.com
+    name: LeoVidal
+    email: Leo@ibm.com
 host: $(catalog.host)
 schemes: []
 basePath: /public
