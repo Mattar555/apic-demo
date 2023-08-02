@@ -4,8 +4,8 @@ info:
   x-ibm-name: test-api
   version: 1.1.2
   contact:
-    name: LeoVidal
-    email: flamengo@ibm.com
+    name: LeoVidal-MarwanAttar
+    email: MYL@ibm.com
 host: $(catalog.host)
 schemes: []
 basePath: /public
