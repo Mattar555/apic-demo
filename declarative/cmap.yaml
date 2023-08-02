@@ -1,0 +1,27 @@
+apiVersion: v1
+data:
+  cmap-data.yaml: "swagger: '2.0'\ninfo:\n  title: Marwan API\n  x-ibm-name: marwan-api\n
+    \ version: 1.1.0\n  contact:\n    name: Marwan \n    email: Marwan@ibm.com\nhost:
+    $(catalog.host)\nschemes: []\nbasePath: /public\nproduces:\n  - application/json\nsecurity:
+    []\nx-ibm-configuration:\n  assembly:\n    execute:\n      - map:\n          version:
+    2.0.0\n          title: map\n          inputs:\n            text:\n              schema:\n
+    \               type: string\n              variable: request.parameters.text\n
+    \         outputs:\n            response:\n              schema:\n                $ref:
+    '#/definitions/responseObject'\n              variable: message.body\n          actions:\n
+    \           - set: response.text\n              from: text\n  gateway: datapower-api-gateway\n
+    \ enforced: true\n  testable: true\n  phase: realized\n  cors:\n    enabled: true\n
+    \ type: rest\n  activity-log:\n    enabled: true\n    error-content: header\n
+    \   success-content: activity\n  application-authentication:\n    certificate:
+    false\nparameters:\n  text:\n    name: text\n    type: string\n    required: false\n
+    \   in: query\n    description: Text passed in\ndefinitions:\n  responseObject:\n
+    \   properties:\n      text:\n        type: string\npaths:\n  /echo:\n    get:\n
+    \     responses:\n        '200':\n          description: 200 OK\n          schema:\n
+    \           $ref: '#/definitions/responseObject'\n      parameters:\n        -
+    $ref: '#/parameters/text'\n\n"
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-08-01T23:56:57Z"
+  name: marwan-configmap
+  namespace: cp4i
+  resourceVersion: "20779060"
+  uid: bd5ee587-5212-4937-b71d-5cb61cfa315f
