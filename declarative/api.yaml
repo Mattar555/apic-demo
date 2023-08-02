@@ -1,0 +1,12 @@
+apiVersion: apiconnect.ibm.com/v1beta1
+kind: API
+metadata:
+  name: marwan-api
+  namespace: cp4i
+spec:
+  definition:
+    configMap: marwan-configmap
+  share:
+    apim:
+      credentialsSecret: apim-credentials
+      providerOrg: nz-police
