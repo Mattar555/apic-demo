@@ -14,7 +14,7 @@ plans:
     approval: false
     rate-limits:
       default:
-        value: 100/1hour
+        value: 10/1hour
 product: 1.0.0
 visibility:
   view:
