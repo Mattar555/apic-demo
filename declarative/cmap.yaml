@@ -20,8 +20,4 @@ data:
     $ref: '#/parameters/text'\n\n"
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2023-08-01T23:56:57Z"
-  name: marwan-configmap
-  namespace: cp4i
-  resourceVersion: "20779060"
-  uid: bd5ee587-5212-4937-b71d-5cb61cfa315f
+  name: test-configmap
