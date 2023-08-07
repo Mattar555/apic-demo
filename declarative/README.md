@@ -1,6 +1,10 @@
 # Overview
 
 
+## NOTE
+
+Please note the declarative approach is, at the time of writing, quite limited in terms of API administration. We expect the full suite of functionalities to be present in future iterations. As such, the imperative approach, as given in the directory titled "imperative" is the most optimal approach to take for the time being.
+
 ## Procedure
 
 First, follow the steps given [here](https://www.ibm.com/docs/en/cloud-paks/cp-integration/2023.2?topic=integrations-using-declarative-apis)
@@ -10,7 +14,9 @@ First, follow the steps given [here](https://www.ibm.com/docs/en/cloud-paks/cp-i
 
 The secret needs to be created first. So follow the steps provided. Ensure the username and password fields are correct.
 
-The certificate at this time of writing does not seem to include the host name (as extracted from the ManagementCluster instance) and as such, is not going to be trusted when attempting to upload the API definition to the API manager. More on this in the appendix section.
+Remember, the username and password pertains to your API Manager, not the Cloud Manager. It is the API Manager who is responsible for, as the name implies, management of API's.
+
+The certificate, obtained from the ca section of the secret obtained from the ManagementCluster does not seem to include the host name is not going to be trusted when attempting to upload the API definition to the API manager. More on this in the appendix section.The SAN's include the internal K8 service objects fronting the instance as opposed to the resolvable DNS name.
 
 ### Procedure - Definition
 
@@ -21,7 +27,7 @@ Now, as given in [this](https://www.ibm.com/docs/en/cloud-paks/cp-integration/20
 3) integrationRuntime
 
 
-We use configmap here. The data enclosed within should contain the API specification desired. A sample api (and enclosing product) is found within the top directory. Notice how the spec portion ofthe configmap.data coincides with the api definition.
+We use the configmap method here. The data enclosed within should contain the API specification desired. A sample api (and enclosing product) is found within the top directory. Notice how the spec portion of the configmap.data (in cmap.yaml) coincides with the contents found in the api definition defined in api.yaml.
 
 Simply obtain the api spec and perform the following:
 
@@ -29,6 +35,11 @@ Simply obtain the api spec and perform the following:
 kubectl create configmap my-config --from-file=path/to/file/here
 ```
 
+In our case, the command is as follows:
+
+```
+kubectl create configmap my-config --from-file=cmap-data.yaml.raw
+```
 Once the configmap and secret are ready, simply create the API object as given in the link above, performing the substitutions where appropriate. Do not forget to place the correct providerOrganisation also.
 
 
