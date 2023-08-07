@@ -42,6 +42,14 @@ kubectl create configmap my-config --from-file=cmap-data.yaml.raw
 ```
 Once the configmap and secret are ready, simply create the API object as given in the link above, performing the substitutions where appropriate. Do not forget to place the correct providerOrganisation also.
 
+### Procedure - YAMLs
+
+The namespace is not hardcoded in the YAMLs. As such, please ensure you are in the correct namespace prior to creating the YAMLs.
+
+The secret yaml contains references to secrets which you must override manually as per your deployment.
+
+Finally, the api.yaml references a specific organisation. Please ensure you manually override the placeholder.
+
 
 ## Appendix
 
